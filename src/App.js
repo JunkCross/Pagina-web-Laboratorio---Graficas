@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import Sidebar from './components/Sidebar';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Dashboard from './pages/Dashboard.jsx';
+import ArchivosCSV from './pages/ArchivosCSV.jsx';
+import Experimentos from './pages/Experimentos.jsx';
+import Reportes from './pages/Reportes.jsx';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Sidebar>
+        <Routes>
+        <Route exact path="/" element={<Experimentos />} />
+          <Route path="/experimentos"element={<Experimentos/>}/>
+          <Route path="/dashboard"element={<Dashboard/>}/>
+          <Route path="/reportes"element={<Reportes/>}/>
+          <Route path="/archivosCSV"element={<ArchivosCSV/>}/>
+        </Routes>
+      </Sidebar>
+    </BrowserRouter>
   );
-}
+
+};
 
 export default App;
